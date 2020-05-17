@@ -1,0 +1,148 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "悦享书院",
+			"app-plus": {
+				"scrollIndicator":"none"
+			}
+		}}     
+		,{
+		    "path" : "pages/login/login",
+		    "style" : {
+				"navigationBarTitleText":"悦享书院"
+			}
+		},
+		{
+			"path":"pages/recommand/recommand",
+			"style": {
+				"navigationBarTitleText":"悦享书院"
+			}
+		},
+		{
+			"path":"pages/my/my",
+			"style": {
+				"navigationBarTitleText":"悦享书院"
+			}
+		}
+		
+        ,{
+            "path" : "pages/my-setting/my-setting",
+            "style" : {
+				"navigationBarTitleText":"设置"
+			}
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {
+				"navigationBarTitleText":"搜索"
+			}
+        }
+        ,{
+            "path" : "pages/order_processed/order_processed",
+            "style" : {
+				"navigationBarTitleText":"已处理订单"
+			}
+        }
+        ,{
+            "path" : "pages/order_comment/order_comment",
+            "style" : {
+				"navigationBarTitleText":"待评论"
+			}
+        }
+        ,{
+            "path" : "pages/order_paid/order_paid",
+            "style" : {
+				"navigationBarTitleText":"已支付"
+			}
+        }
+        ,{
+            "path" : "pages/order_all/order_all",
+            "style" : {
+				"navigationBarTitleText":"全部订单"
+			}
+        }
+        ,{
+            "path" : "pages/write_comment/write_comment",
+            "style" : {
+				"navigationBarTitleText":"评论"
+			}
+        }
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/pay/pay",
+            "style" : {
+				"navigationBarTitleText":"确认订单",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
+        }
+        ,{
+            "path" : "pages/history/history",
+            "style" : {
+				"navigationBarTitleText":"浏览历史"
+			}
+        }
+        ,{
+            "path" : "pages/information/information",
+            "style" : {
+				"navigationBarTitleText":"编辑个人资料"
+			}
+        }
+        ,{
+            "path" : "pages/password/password",
+            "style" : {
+				"navigationBarTitleText":"密码修改",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
+        }
+        ,{
+            "path" : "pages/record/record",
+            "style" : {
+				"navigationBarTitleText":"退款记录"
+			}
+        }
+        ,{
+            "path" : "pages/myFavorite/myFavorite",
+            "style" : {
+				"navigationBarTitleText":"我的收藏"
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "悦享书院",
+		"navigationBarBackgroundColor": "#b8e5e8",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor":"#F6EE52",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath":"pages/index/index",
+				"iconPath":"static/icon/shouye.png",
+				"selectedIconPath":"static/icon/shouye-copy.png",
+				"text":"主页"
+			},
+			{
+				"pagePath":"pages/recommand/recommand",
+				"iconPath":"static/icon/chazhao.png",
+				"selectedIconPath":"static/icon/chazhao-copy.png",
+				"text":"查找"
+			},
+			{
+				"pagePath":"pages/my/my",
+				"iconPath":"static/icon/wode.png",
+				"selectedIconPath":"static/icon/wode-copy.png",
+				"text":"我的"
+			}
+		]
+	}
+}

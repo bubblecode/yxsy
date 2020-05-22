@@ -1,0 +1,25 @@
+{
+  "name": "zixishi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "zgz",
+  "license": "ISC",
+  "dependencies": {
+    "alipay-node-sdk": "^1.1.9",
+    "alipay-sdk": "^3.0.8",
+    "art-template": "^4.13.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-art-template": "^1.0.1",
+    "images": "^3.0.2",
+    "md5-node": "^1.0.1",
+    "multer": "^1.4.2",
+    "multiparty": "^4.2.1",
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,0 +1,807 @@
+<html>
+
+<head>
+    <title>“悦享室”管理系统</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .cell {
+            padding: 5px;
+        }
+
+        /* #bodystyle {
+            width: 1280px;
+            height: 607px;
+        } */
+
+        #header {
+            height: 10%;
+            background-color: #475869;
+            border-bottom: 1px solid #fff;
+        }
+
+        #header p {
+            float: left;
+            color: #fff;
+            margin-left: 3%;
+            font-size: 18px;
+            font-family: cursive;
+
+
+            line-height: 54px;
+            margin-bottom: 0;
+        }
+
+        #header a {
+            float: right;
+            border-radius: 3px;
+            height: 40%;
+            width: 4%;
+            margin-top: 15px;
+            margin-right: 20px;
+            background-color: #fff;
+            color: #475869;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: cursive;
+            display: block;
+        }
+
+        #center {
+            overflow: hidden;
+        }
+
+        #center .left {
+            width: 200px;
+            height: 90%;
+            border-right: 1px solid #fff;
+            float: left;
+            position: relative;
+            display: block;
+            background-color: #475869;
+        }
+
+        #center .left .select {
+            width: 150px;
+            margin-top: 100px;
+            margin-left: 50px;
+            float: left;
+        }
+
+        #center .left .select a {
+            text-align: center;
+            display: block;
+            height: 40px;
+            border-bottom: 1px solid #fff;
+            width: 95px;
+            text-decoration: none;
+            font-family: cursive;
+            color: #fff;
+        }
+
+        #center .left .select a:hover {
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #refresh {
+            font-family: cursive;
+            display: block;
+            color: #fff;
+            margin-top: 80px;
+        }
+
+        #refresh label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        #refresh #refresh_submit {
+            display: block;
+            margin-top: 15px;
+            margin-left: 5px;
+        }
+
+        #refresh #refresh_submit button {
+            display: none;
+            width: 60px;
+            height: 25px;
+            border: 1px solid #bcbcbc;
+            border-radius: 3px;
+            color: #475869;
+        }
+
+        #center .right {
+            overflow: hidden;
+            height: 90%;
+            background-color: #dbdbdb;
+        }
+
+        #center .right .right_center {
+            height: 85%;
+            width: 90%;
+            background-color: #fff;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        #center .right .right_center p {
+            text-align: center;
+            font-family: cursive;
+            font-size: 30px;
+            color: #475869;
+            padding-top: 200px;
+            display: block;
+        }
+
+        #center .right .right_center .tab {
+            padding-top: 50px;
+        }
+
+        #center .right .right_center .select {
+            padding-top: 20px;
+            padding-left: 610px;
+        }
+
+        #select_text {
+            width: 200px;
+            height: 25px;
+            border-radius: 3px;
+            border: 1px solid #bcbcbc;
+        }
+
+        #select_button {
+            background-color: #475869;
+            color: #fff;
+            border: 1px solid#475869;
+            border-radius: 3px;
+            height: 25px;
+            width: 50px;
+        }
+
+        #nr {
+            margin: 0 auto;
+            border: 1px solid #bcbcbc;
+            margin-top: 30px;
+            /* width: 700px; */
+            width: 94%;
+            height: 100px;
+            border-radius: 5px;
+        }
+
+        table th {
+            border-bottom: 1px solid #bcbcbc;
+            width: 700px;
+            height: 50px;
+            font-size: 20px;
+            font-family: cursive;
+        }
+
+        table td {
+            text-align: center;
+            font-family: cursive;
+            font-size: 17px;
+            height: 50px;
+            border-right: 0.5px solid #bcbcbc;
+            border-left: 0.5px solid #bcbcbc;
+            border-top: 0.5px solid #bcbcbc;
+        }
+
+        .Button {
+            background-color: #475869;
+            color: #fff;
+            border: 1px solid#475869;
+            border-radius: 3px;
+            height: 25px;
+            min-width: 50px;
+        }
+
+        #Table {
+            height: 80%;
+            overflow: auto;
+
+        }
+
+        #change {
+            position: fixed;
+            z-index: 100;
+            display: none;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #bcbcbc;
+            border-radius: 5px;
+            background-color: #475869;
+        }
+
+        #change p {
+            text-align: center;
+            font-family: cursive;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        span {
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+            margin-right: 35px;
+            font-family: cursive;
+            color: #fff;
+        }
+
+        #change_main input {
+            color: #000000;
+            width: 180px;
+            height: 25px;
+            border: 1px solid #bcbcbc;
+            border-radius: 3px;
+            padding-left: 5px;
+        }
+
+        #change_sub input {
+            display: block;
+            margin-top: 15px;
+            border: 1px solid #bcbcbc;
+            border-radius: 3px;
+            width: 70px;
+            height: 25px;
+
+            color: #475869;
+        }
+
+        #sub1 {
+            display: block;
+            float: left;
+            margin-left: 85px;
+        }
+
+        #sub2 {
+            display: block;
+            float: right;
+            margin-right: 35px;
+        }
+
+        .badge {
+            margin-top: 0;
+            margin-right: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="change">
+        <p>修改自习室信息</p>
+        <div id="change_main">
+            <span>编号：<input id="change_id" type="text" value="" readonly disabled><br /></span>
+            <span>种类：<input id="change_type" type="text" value=""><br /></span>
+            <span>价格：<input id="change_price" type="text" value=""><br /></span>
+            <span>配置：<input id="change_detail" type="text" value=""><br /></span>
+            <span>预定状态：<input id="change_state" type="text" value="" readonly disabled><br /></span>
+        </div>
+        <div id="change_sub">
+            <input type="submit" value="取    消" id="sub1"
+                onclick="document.getElementById('change').style.display='none'">
+            <input type="submit" value="确认修改" id="sub2" onclick="upload()">
+        </div>
+    </div>
+
+    <div id="bodystyle">
+        <div id="header">
+            <p>欢迎登陆悦享室在线预订管理系统</p>
+            <a id="tc" style="cursor:pointer">退出</a>
+            <span style="float:right;font-size: 14px;font-family:auto;line-height:25px;" id="mgrinfo"></span>
+        </div>
+        <div id="center">
+            <div class="left">
+                <div class="select">
+
+                    <a onclick="user()" id="user">用户信息</a><br />
+                    <a onclick="order()" id="order">订单信息 <span class="badge" id="order_badge">..</span></a><br />
+                    <a onclick="study()" id="study">自习室信息</a><br />
+                    <a onclick="refund()" id="refund">退款受理 <span class="badge" id="refund_badge">..</span></a>
+                    <a href='#change' id='tanchu' style="display:none;"></a>
+                    <div id="refresh" style="display: none;">
+                        <form>
+                            <label>
+                                <input name="refresh" type="radio" value="" onchange="refresh1()">刷新</label><br />
+                            <label>
+                                <input name="refresh" type="radio" value="" onchange="refresh2(sign)"
+                                    checked>自动刷新</label>
+                            <div id="refresh_submit">
+                                <button type="button" id="refresh_sub" onclick="Refresh_sub(sign)"
+                                    style="display: none;">刷新</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right_center">
+                    <p id="LogIn">"欢迎登陆悦享室在线预订管理系统"</p>
+                    <div class="tab">
+                        <div id="Table">
+                            <table id="nr" cellspacing="0">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="static/js/jquery.leanModal.min.js" type="text/javascript"></script>
+<script>
+    var sign;
+    var str = undefined;
+    var ids = []
+    //登陆
+    document.getElementById("LogIn").innerHTML = "欢迎登陆悦享室在线预订管理系统";
+
+    //点击用户信息
+    function user() {
+        document.getElementById('LogIn').style.display = 'none';
+        document.getElementById('user').style.color = "yellow";
+        document.getElementById('order').style.color = "#ffffff";
+        document.getElementById('study').style.color = "#ffffff";
+        document.getElementById('refund').style.color = "#ffffff";
+        $.ajax({
+            url: "http://120.27.208.220/cusomerinfo",
+            dataType: "json",
+            async: false,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                $("#nr").html("");
+                $("#nr").html("<tr><th colspan='5'>客户信息</th></tr><tr><td>姓名</td><td>电话</td><td>年龄</td><td>性别</td><td>邮箱</td></tr>");
+                $.each(data.value, function (i, item) {
+                    $("#nr").append("<tr><td>" + item.name + "</td><td>" + item.phone + "</td><td>" + item.age + "</td><td>" + item.sex + "</td><td>" + item.email + "</td></tr>");
+                    //alert(item.age);
+                });
+            },
+            complete: function () { },
+            error: function () { alert("请求出错") }
+        });
+    }
+
+    //点击订单信息
+    function order() {
+        sign = 1;
+        document.getElementById('LogIn').style.display = 'none';
+        document.getElementById('refresh').style.display = 'block';
+        document.getElementById('LogIn').style.display = 'none';
+        document.getElementById('order').style.color = "yellow";
+        document.getElementById('user').style.color = "#ffffff";
+        document.getElementById('study').style.color = "#ffffff";
+        document.getElementById('refund').style.color = "#ffffff";
+        $.ajax({
+            url: "http://120.27.208.220/orderlist",
+            dataType: "json",
+            async: true,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                ids = [];
+                $("#nr").html("");
+                $("#nr").html("<tr><th colspan='9'>订单信息</th></tr><tr><td>订单编号</td><td>开始时间</td><td>结束时间</td><td>付款时间</td><td>价格</td><td>支付状态</td><td>用户电话</td><td>自习室类型</td><td>自习室分配</td></tr>");
+                $.each(data.value, function (i, item) {
+                    if (item.handle == "已支付") {
+                        $("#nr").append("<tr class='paid' data-oid=" + item.id + "><td class='cell'>" + item.id + "</td><td>" + item.starttime + "</td><td>" + item.endtime + "</td><td>" + item.paytime + "</td><td>" + item.price + "</td><td>" + item.handle + "</td><td>" + item.phone + "</td><td>" + item.type + "</td><td><button class='Button' value=" + item.id + ">分配</button></td></tr>");
+                        ids.push(item.id);
+                    }
+                    else {
+                        $("#nr").append("<tr><td class='cell'>" + item.id + "</td><td>" + item.starttime + "</td><td>" + item.endtime + "</td><td>" + item.paytime + "</td><td>" + item.price + "</td><td>" + item.handle + "</td><td>" + item.phone + "</td><td>" + item.type + "</td><td>已处理</td></tr>");
+                    }
+                });
+                var aseach = $('.paid');
+                for (let i = 0; i < aseach.length; i++) {
+                    $(aseach[i]).on('click', function (e) {  // TODO: 自习室分配函数
+                        // console.log(e.toElement.value);  自习室id
+                        var fp = prompt("请输入分配的自习室id");
+                        if (Number(fp) < 1000 && fp != "" && fp != null) {
+                            $.ajax({
+                                url: "http://120.27.208.220/allocate",
+                                dataType: "json",
+                                async: false,
+                                data: { id: e.toElement.value, roomid: fp, buildingid: $.cookie('buildingID') },
+                                type: "POST",
+                                beforeSend: function () { },
+                                success: function (data) {
+                                    if ((data.code) == 0) {
+                                        alert("分配成功");
+                                        location.reload(true);
+                                    }
+                                    else {
+                                        alert("分配失败");
+                                    }
+                                },
+                                complete: function () { },
+                                error: function () { alert("请求出错") }
+                            });
+                        }
+                        else {
+                            alert("修改失败")
+                        }
+                    });
+                }
+            },
+            complete: function () { },
+            error: function () { alert("请求出错") }
+        });
+    }
+
+    //点击自习室信息
+    function study() {
+        sign = 2;
+        document.getElementById('refresh').style.display = 'block';
+        document.getElementById('LogIn').style.display = 'none';
+        document.getElementById('study').style.color = "yellow";
+        document.getElementById('user').style.color = "#ffffff";
+        document.getElementById('order').style.color = "#ffffff";
+        document.getElementById('refund').style.color = "#ffffff";
+        $.ajax({
+            url: "http://120.27.208.220/roominfo",
+            dataType: "json",
+            async: true,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                $("#nr").html("");
+                $("#nr").html("<tr><th colspan='6'>自习室信息</th></tr><tr><td>自习室编号</td><td>自习室种类</td><td>价格</td><td><select onchange='opt(this)'><option id='op1' value='预定状态'>预定状态</option><option id='op2' value='未预定'>未预定</option><option id='op3' value='已预订'>已预订</option></select></td><td>自习室配置</td><td>信息修改</td></tr>");
+                $.each(data.value, function (i, item) {
+                    $("#nr").append("<tr><td>" + item.room_number + "</td><td>" + item.type + "</td><td>" + item.price + "</td><td>" + item.state + "</td><td>" + item.detail + "</td><td><button class='Button' onclick='find(" + item.room_number + ")'>修改</button></td></tr>");
+                    $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+                });
+            },
+            complete: function () { },
+            error: function () { alert("请求出错") }
+        });
+    }
+
+    function opt(value) {//筛选未预定自习室
+        var selectedOption = value.options[value.selectedIndex];
+        if (selectedOption.value == '预定状态') {
+            document.getElementById('refresh').style.display = 'block';
+            document.getElementById('LogIn').style.display = 'none';
+            document.getElementById('study').style.color = "yellow";
+            document.getElementById('user').style.color = "#ffffff";
+            document.getElementById('order').style.color = "#ffffff";
+            document.getElementById('refund').style.color = "#ffffff";
+            $.ajax({
+                url: "http://120.27.208.220/roominfo",
+                dataType: "json",
+                async: true,
+                data: { buildingid: $.cookie('buildingID') },
+                type: "POST",
+                beforeSend: function () { },
+                success: function (data) {
+                    $("#nr").html("");
+                    $("#nr").html("<tr><th colspan='6'>自习室信息</th></tr><tr><td>自习室编号</td><td>自习室种类</td><td>价格</td><td><select onchange='opt(this)'><option id='op1' value='预定状态'>预定状态</option><option id='op2' value='未预定'>未预定</option><option id='op3' value='已预订'>已预订</option></select></td><td>自习室配置</td><td>信息修改</td></tr>");
+                    $.each(data.value, function (i, item) {
+                        $("#nr").append("<tr><td>" + item.room_number + "</td><td>" + item.type + "</td><td>" + item.price + "</td><td>" + item.state + "</td><td>" + item.detail + "</td><td><button class='Button' onclick='find(" + item.room_number + ")'>修改</button></td></tr>");
+                        $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+                    });
+                },
+                complete: function () { },
+                error: function () { alert("请求出错") }
+            });
+        }
+        else if (selectedOption.value == '未预定') {
+            document.getElementById('refresh').style.display = 'block';
+            document.getElementById('LogIn').style.display = 'none';
+            document.getElementById('study').style.color = "yellow";
+            document.getElementById('user').style.color = "#ffffff";
+            document.getElementById('order').style.color = "#ffffff";
+            document.getElementById('refund').style.color = "#ffffff";
+            $.ajax({
+                url: "http://120.27.208.220/roominfo",
+                dataType: "json",
+                async: true,
+                data: { buildingid: $.cookie('buildingID') },
+                type: "POST",
+                beforeSend: function () { },
+                success: function (data) {
+                    $("#nr").html("");
+                    $("#nr").html("<tr><th colspan='6'>自习室信息</th></tr><tr><td>自习室编号</td><td>自习室种类</td><td>价格</td><td><select onchange='opt(this)'><option id='op2' value='未预定'>未预定</option><option id='op3' value='已预订'>已预订</option><option id='op1' value='预定状态'>预定状态</option></select></td><td>自习室配置</td><td>信息修改</td></tr>");
+                    $.each(data.value, function (i, item) {
+                        if (item.state == '未预定') {
+                            $("#nr").append("<tr><td>" + item.room_number + "</td><td>" + item.type + "</td><td>" + item.price + "</td><td>" + item.state + "</td><td>" + item.detail + "</td><td><button class='Button' onclick='find(" + item.room_number + ")'>修改</button></td></tr>");
+                            $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+                        }
+                    });
+                },
+                complete: function () { },
+                error: function () { alert("请求出错") }
+            });
+        }
+        else if (selectedOption.value == '已预订') {
+            document.getElementById('refresh').style.display = 'block';
+            document.getElementById('LogIn').style.display = 'none';
+            document.getElementById('study').style.color = "yellow";
+            document.getElementById('user').style.color = "#ffffff";
+            document.getElementById('order').style.color = "#ffffff";
+            document.getElementById('refund').style.color = "#ffffff";
+            $.ajax({
+                url: "http://120.27.208.220/roominfo",
+                dataType: "json",
+                async: true,
+                data: { buildingid: $.cookie('buildingID') },
+                type: "POST",
+                beforeSend: function () { },
+                success: function (data) {
+                    $("#nr").html("");
+                    $("#nr").html("<tr><th colspan='6'>自习室信息</th></tr><tr><td>自习室编号</td><td>自习室种类</td><td>价格</td><td><select onchange='opt(this)'><option id='op3' value='已预订'>已预订</option><option id='op2' value='未预定'>未预定</option><option id='op1' value='预定状态'>预定状态</option></select></td><td>自习室配置</td><td>信息修改</td></tr>");
+                    $.each(data.value, function (i, item) {
+                        if (item.state == '已预定') {
+                            $("#nr").append("<tr><td>" + item.room_number + "</td><td>" + item.type + "</td><td>" + item.price + "</td><td>" + item.state + "</td><td>" + item.detail + "</td><td><button class='Button' onclick='find(" + item.room_number + ")'>修改</button></td></tr>");
+                            $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+                        }
+                    });
+                },
+                complete: function () { },
+                error: function () { alert("请求出错") }
+            });
+        }
+    }
+
+    //点击退款受理
+    function refund() {
+        sign = 3;
+        document.getElementById('refresh').style.display = 'block';
+        document.getElementById('LogIn').style.display = 'none';
+        document.getElementById('refund').style.color = "yellow";
+        document.getElementById('user').style.color = "#ffffff";
+        document.getElementById('order').style.color = "#ffffff";
+        document.getElementById('study').style.color = "#ffffff";
+        $.ajax({
+            url: "http://120.27.208.220/refundinfo",
+            dataType: "json",
+            async: true,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                console.log(data.value)
+                $("#nr").html("");
+                $("#nr").html("<tr><th colspan='8'>退订信息</th></tr><tr><td>订单编号</td><td>订单状态</td><td>申请时间</td><td>支付时间</td><td>价格</td><td>用户电话</td><td>自习室种类</td><td>退款受理</td></tr>");
+                $.each(data.value, function (i, item) {
+                    $("#nr").append("<tr class='refund-cell'><td class='cell'>" + item.id + "</td><td>" + item.state + "</td><td>" + item.applytime + "</td><td>" + item.paytime + "</td><td>" + item.price + "</td><td>" + item.phone + "</td><td>" + item.type + "</td><td><button class='Button' value=" + item.id + ">去受理</button></td></tr>");
+                    $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+                });
+                //退订受理
+                var asearch = $('.refund-cell');
+                for (let i = 0; i < asearch.length; i++) {
+                    $(asearch[i]).on('click', function(e) {
+                        if (confirm("请问是否受理退订")) {
+                            $.ajax({
+                                url: "http://120.27.208.220/setrefund",
+                                dataType: "json",
+                                async: false,
+                                data: { id: e.toElement.value },
+                                type: "POST",
+                                beforeSend: function () { },
+                                success: function (data) {
+                                    if ((data.code) == 0) {
+                                        alert("受理成功");
+                                        location.reload(true);
+                                    }
+                                    else {
+                                        alert("受理失败");
+                                    }
+                                },
+                                complete: function () { },
+                                error: function () { alert("请求出错") }
+                            });
+                        }
+                    })
+                }
+                $('#refund_badge').text(data.length)
+
+
+
+            },
+            complete: function () { },
+            error: function () { alert("请求出错") }
+        });
+    }
+    //选择刷新
+    // 手动刷新
+    function refresh1() {
+        clearInterval(str);
+        document.getElementById('refresh_sub').style.display = 'block';
+    }
+    // 自动刷新
+    function refresh2(x) {
+        document.getElementById('refresh_sub').style.display = 'none';
+        str = setInterval(Refresh_sub(x), 3000);
+    }
+    //TODO: 点击刷新
+    function Refresh_sub(x) {
+        if (x == '1') {
+            order();
+            alert("刷新成功");
+        } else if (x == '2') {
+            study();
+            alert("刷新成功");
+        } else if (x == ' 3') {
+            refund();
+            alert("刷新成功");
+        } else {
+        }
+    }
+    // 页面加载完成
+    $(document).ready(function () {
+        $('#mgrinfo').text('当前用户：' + $.cookie('username'));
+        refresh2()
+        //退出登录开始
+        $("#tc").click(function () {
+            $.ajax({
+                url: "http://120.27.208.220/mgrlogout",
+                dataType: "text",
+                async: false,
+                data: { username: $.cookie('username'), buildingid: $.cookie('buildingID') },
+                type: "POST",
+                beforeSend: function () { },
+                success: function (data) {
+                    if ($.cookie('buildingID') == null || $.cookie('username') == null) {
+                        if (confirm("请问是否退出")) {
+                            $(window).attr('location', 'http://120.27.208.220/login');
+                        }
+                    }
+                    else {
+                        alert("登录状态异常");
+                        $(window).attr('location', 'http://120.27.208.220/login');
+                    }
+                },
+                complete: function () { },
+                error: function () { alert("请求出错") }
+            });
+        });
+    });
+
+    //订单处理
+
+
+
+    $("#tanchu").leanModal({ top: 200, overlay: 0.7, closeButton: ".modal_close" });
+    //修改自习室
+    //读取自习室信息
+    function find(x) {
+        $("#change_id").val(x);
+        $("#tanchu").click();
+        $.ajax({
+            url: "http://120.27.208.220/roominfo",
+            dataType: "json",
+            async: false,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                $.each(data.value, function (i, item) {
+                    if ((item.room_number) == x) {
+                        //读取数据
+                        $("#change_type").val(item.type);
+                        $("#change_price").val(item.price);
+                        $("#change_detail").val(item.detail);
+                        $("#change_state").val(item.state);
+                    }
+                });
+            },
+            complete: function () { },
+            error: function () { alert("读取数据失败") }
+        });
+    }
+
+    //上传信息
+    function upload() {
+        $.ajax({
+            url: "http://120.27.208.220/setroominfo",
+            dataType: "json",
+            async: false,
+            data: { buildingid: $.cookie('buildingID'), roomID: $("#change_id").val(), type: $("#change_type").val(), price: $("#change_price").val(), detail: $("#change_detail").val() },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                if (data.code == 0) {
+                    $("#sub1").click();
+                    alert("修改成功！");
+                }
+                location.reload(true);
+            },
+            complete: function () { },
+            error: function () { alert("修改失败") }
+        });
+    }
+    //刷新函数直接使用user(),order(),study(),refund()
+
+    // TODO: 定时刷新
+    var moniter = setInterval(function () {
+        var cyear, cmonth, cday, chour, eyear, emonth, eday, ehour;
+        // 如果有已预定自习室会显示角标
+        $.ajax({
+            url: "http://120.27.208.220/getNotice",
+            method: "POST",
+            data: {
+                buildingID: $.cookie('buildingID')
+            },
+            success(res) {
+                console.log("标签：", res)
+                $('#order_badge').text(res.new_order);
+                $('#refund_badge').text(res.new_refund);
+            }
+        });
+        // 定时刷新，将已预定的自习室变成未预定的自习室
+        $.ajax({
+            url: "http://120.27.208.220/orderlist",
+            dataType: "json",
+            async: true,
+            data: { buildingid: $.cookie('buildingID') },
+            type: "POST",
+            beforeSend: function () { },
+            success: function (data) {
+                console.log(data)
+                $.each(data.value, function (i, item) {
+                    // console.log(item)
+                    if (item.handle == "已处理") {
+                        var d = new Date()
+                        cyear = d.getFullYear()
+                        cmonth = d.getMonth()
+                        cday = d.getDay()
+                        chour = d.getHours()
+                        eyear = Number(item.endtime.split(' ')[0].split('-')[0])
+                        emonth = Number(item.endtime.split(' ')[0].split('-')[1])
+                        eday = Number(item.endtime.split(' ')[0].split('-')[2])
+                        ehour = Number(item.endtime.split(' ')[1].split(':')[0])
+
+                        if (cyear > eyear) {
+                            resetRoomState(item.id, $.cookie('buildingID'), item.roomid);
+                        } else if (cmonth > emonth) {
+                            resetRoomState(item.id, $.cookie('buildingID'), item.roomid);
+                        } else if (cday > eday) {
+                            resetRoomState(item.id, $.cookie('buildingID'), item.roomid);
+                        } else if (chour >= ehour) {
+                            resetRoomState(item.id, $.cookie('buildingID'), item.roomid);
+                        } else {
+                            console.log('运行中....')
+                        }
+
+                    }
+                });
+            },
+            complete: function () { },
+            error: function () { alert("请求出错") }
+        });
+    }, 5000);
+    function resetRoomState(orderID, buildingID, roomID) {
+        $.ajax({
+            url: "http://120.27.208.220/setroomstate",
+            type: "POST",
+            dataType: "json",
+            async: true,
+            data: {
+                orderID: orderID,
+                buildingID: buildingID,
+                roomID: roomID
+            },
+            success(data) {
+                console.log(data.msg);
+            }
+        });
+    }
+</script>
+
+
+</html>

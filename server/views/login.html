@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <title>管理系统</title>
+    <style type="text/css">
+    body{
+        margin: 0;
+        padding: 0;
+        background-image: url(static/images/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #center .login{
+        display: block;
+        border: 1px solid rgb(88, 139, 187);
+        border-radius: 10px;
+        height: 260px;
+        width: 400px;
+        position: absolute;
+        left: -webkit-calc(50% - 200px);
+        top: -webkit-calc(50% - 130px);
+    }
+    #center .login p{
+        height: 30px;
+        text-align: center;
+        font-size: 30px;
+        font-family: cursive;
+        color: #588bbb;
+        font-weight: bold;
+    }
+    #center .login .login_name{
+        height: 30px;
+        width: 300px;
+        position: relative;
+        left: -webkit-calc(50% - 150px);
+        border: 1px solid  #588bbb;
+        border-radius: 5px;
+        
+    }
+    #center .login .login_name .login_name_img img{
+        height: 30px;
+        width: 30px;
+        float: left;
+    }
+    #center .login .login_name .login_name_input input{
+        height: 30px;
+        width: 270px;
+        border: 0.5px ;
+        opacity: 0.5;
+        border-left: 1px solid #588bbb;
+    }
+    #center .login .login_password{
+        height: 30px;
+        width: 300px;
+        border-radius: 5px;
+        position: relative;
+        left: -webkit-calc(50% - 150px);
+        border: 1px solid #588bbb;
+    }
+    #center .login .login_password .login_password_img img{
+        height: 30px;
+        width: 30px;
+        float: left;
+    }
+    #center .login .login_password .login_password_input input{
+        height: 30px;
+        width: 270px;
+        border: 0.5px;
+        opacity: 0.5;
+        border-left:1px solid #588bbb;
+    }
+    #center .login .login_button input{
+        height: 35px;
+        width: 240px;
+        margin-top: 12px;
+        position: relative;
+        left: -webkit-calc(50% - 120px);
+        border-radius: 5px;
+        border: 0.5px ;
+        background: #588bbb;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    #center .login .login_button{
+       padding-top: 12px;
+    }
+    </style>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#login").click(function(){
+            var string1=$("#name").val();
+            var string2=$("#password").val();
+            if(string1==""||string2==""){
+            alert("用户名和密码不可以为空");
+            }
+            else{
+                $.ajax({
+                    url:"http://120.27.208.220/mgrlogin",
+                    dataType:"text",
+                    async:false,
+                    data:{name:string1,passwd:string2},
+                    type:"POST",
+                    beforeSend:function(){},
+                    success:function(data){
+                    if($.cookie('buildingID')==1){
+                        $(window).attr('location','http://120.27.208.220/manage');
+                    }},
+                    complete:function(){},
+                    error:function(){alert("请求出错")}
+                });
+            }
+        });
+    });
+</script>
+<body>
+    <script>
+        
+    </script>
+
+    <div id ="center">
+        <div class="login">
+            <p>悦享室</p>
+            <div class="login_name">
+                <div class="login_name_img"><img src="static/images/用户1.png"></div>
+                <div class="login_name_input">
+                    <input type="text" name="name" id="name" value="" placeholder=" 请输入您的账号" >
+                </div>
+            </div>
+            <br/>
+            <div class="login_password">
+                <div class="login_password_img"><img src="static/images/密码1.png"></div>
+                <div class="login_password_input">
+                    <input type="password" name="password" id="password" value="" placeholder=" 请输入您的密码">
+                </div>
+            </div>
+            <div class="login_button">
+                <input id="login" type="submit" name="submit" value="登      录">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
